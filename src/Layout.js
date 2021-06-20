@@ -7,7 +7,7 @@ import Content from './Layout/Content';
 import SideDrawer from './Layout/SideDrawer';
 import { ThemeProvider, createMuiTheme, Grid } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, Route, useHistory } from 'react-router-dom';
+import { Redirect, Route, useHistory, useLocation } from 'react-router-dom';
 import QuizHeader from './Components/TestHeaders/QuizHeader';
 import ExamHeader from './Components/TestHeaders/ExamHeader';
 import { makeStyles } from '@material-ui/core/styles';
@@ -45,6 +45,15 @@ const useStyles = makeStyles((theme) => ({
         // justifyContent: 'center'
 
     },
+    welcome: {
+        flexGrow: 1,
+        padding: theme.spacing(0),
+        height: '100vh',
+        // display: 'flex',
+        // alignItems: 'center',
+        // justifyContent: 'center'
+
+    },
     speedDial: {
         position: 'absolute',
         bottom: theme.spacing(2),
@@ -63,12 +72,16 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Layout = (props) => {
+
+    
     const classes = useStyles();
 
     const matches = useMedia('(min-width: 768px)');
 
     const history = useHistory()
 
+    const location = useLocation()
+   
     const [open, setOpen] = useState(false);
     const [openFab, setOpenFab] = useState(false)
     const [hidden, setHidden] = useState(false);
@@ -187,7 +200,7 @@ const Layout = (props) => {
 
 
     return (
-        <main className={classes.content}>
+        <main className={ location.pathname === '/welcome' ? classes.welcome : classes.content}>
             <div className={classes.toolbar} />
 
             <Backdrop open={openFab} />

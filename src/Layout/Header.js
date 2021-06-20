@@ -157,7 +157,7 @@ const Header = ({ handleDrawerOpen, theme, user }) => {
 
           {matches ?
             <div className={classes.title} style={{ display: 'flex' }}>
-              <Typography style={{ cursor: "pointer", marginRight: '20px' }} variant="h6" onClick={() => history.push('/')}>
+              <Typography style={{ cursor: "pointer", marginRight: '20px' }} variant="h6" onClick={user ? () => history.push('/') : () => history.push('/welcome')}>
                 insta<span style={{ color: 'yellow' }}>LEARN</span>
               </Typography>
 

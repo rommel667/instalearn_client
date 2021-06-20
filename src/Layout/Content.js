@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom'
 import { useLazyQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { useSelector, useDispatch } from 'react-redux'
+import Welcome from '../Components/User/Welcome'
 import Login from '../Components/User/Login'
 import Register from '../Components/User/Register'
 import VerifyUser from '../Components/User/VerifyUser'
@@ -88,7 +89,7 @@ const Content = () => {
 
     const startTest = () => {
         console.log("START TEST");
-        
+
         if (subcategoryId === "All Subcategory") {
             setCatIdForCat(categoryId)
             setQSizeForCat(questionSize)
@@ -156,6 +157,7 @@ const Content = () => {
         <>
             {user ? <Redirect to='/' /> :
                 <div>
+                    {user ? <Redirect to='/' /> : <Route path='/welcome' component={Welcome} />}
                     {user ? <Redirect to='/' /> : <Route path='/login' component={Login} />}
                     {user ? <Redirect to='/' /> : <Route path='/register' component={Register} />}
                     {user ? <Redirect to='/' /> : <Route path='/verification' component={VerifyUser} />}
@@ -185,7 +187,7 @@ const Content = () => {
                         />)}
                     />
 
-                        
+
                     <Route
                         path='/'
                         render={(props) => (
@@ -194,9 +196,9 @@ const Content = () => {
                                 startExam={startTest}
                             />)}
                     />
-                </Switch> : <Redirect to='/login' />
+                </Switch> : <Redirect to='/welcome' />
             }
-</>
+        </>
     )
 }
 

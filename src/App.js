@@ -18,14 +18,14 @@ import 'moment-timezone';
 import { extraReducer, initialState } from './redux/reducers/extraReducer'
 
 const httpLink = createHttpLink({
-  uri: process.env.REACT_APP_HTTP_API
+  uri: process.env.REACT_APP_HTTP_API_DEV,
 })
 
 const wsLink = new WebSocketLink({
-  uri: process.env.REACT_APP_WS_API,
+  uri: process.env.REACT_APP_WS_API_DEV,
   options: {
     reconnect: true
-  }
+  },
 });
 
 const splitLink = split(
