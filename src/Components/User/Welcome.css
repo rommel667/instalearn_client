@@ -27,3 +27,9 @@
     padding: 20px;
     text-align: center;
   }
+
+  .newAccountButton {
+      padding: 10;
+      width: 40%;
+      height: 40;
+  }
