@@ -1,0 +1,14 @@
+.exampage {
+    height: 80vh;
+    padding: 10px 20px;
+    overflow-y: scroll;
+}
+
+.exampage::-webkit-scrollbar {
+    display: none;
+  }
+
+.exampage {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

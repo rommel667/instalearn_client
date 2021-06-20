@@ -1,0 +1,30 @@
+.sidebar {
+    height: 86vh; 
+    border:2px solid gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar__header {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10%;
+}
+
+.sidebar__chats {
+    
+    flex: 1;
+    overflow-y: scroll;
+    padding: 10px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+.sidebar__chats::-webkit-scrollbar {
+    display: none;
+}
+
+

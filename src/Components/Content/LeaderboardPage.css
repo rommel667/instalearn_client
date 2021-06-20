@@ -1,0 +1,15 @@
+.leaderboardpage {
+    
+    height: 90vh;
+    padding: 10px 20px;
+    overflow-y: scroll;
+}
+
+.leaderboardpage::-webkit-scrollbar {
+    display: none;
+  }
+
+.leaderboardpage {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

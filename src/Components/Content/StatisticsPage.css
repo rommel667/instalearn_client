@@ -1,0 +1,14 @@
+.statisticspage {
+    height: 90vh;
+    padding: 0 20px;
+    overflow-y: scroll;
+}
+
+.statisticspage::-webkit-scrollbar {
+    display: none;
+  }
+
+.statisticspage {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

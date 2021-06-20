@@ -1,0 +1,11 @@
+.google-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
