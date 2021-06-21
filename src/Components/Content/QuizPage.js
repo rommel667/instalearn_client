@@ -41,6 +41,7 @@ const QuizPage = ({ catloading, subloading, retry, showResult, setShowResult }) 
     const showQuizResult = useSelector(state => state.test.showQuizResult)
     const currentQuestionNumber = useSelector(state => state.test.currentQuestionNumber)
     const showCorrectOrWrong = useSelector(state => state.test.showCorrectOrWrong)
+    const correctOrWrong = useSelector(state => state.test.correctOrWrong)
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -60,10 +61,10 @@ const QuizPage = ({ catloading, subloading, retry, showResult, setShowResult }) 
                 query: FETCH_USERINFO_QUERY
             })
             if (data) {
-                data.userInfo.correctExamCategory = [ ...result.data.submitResultExam.correctExamCategory ]
-                data.userInfo.correctExamSubcategory = [ ...result.data.submitResultExam.correctExamSubcategory ]
-                data.userInfo.wrongExamCategory = [ ...result.data.submitResultExam.wrongExamCategory ]
-                data.userInfo.wrongExamSubcategory = [ ...result.data.submitResultExam.wrongExamSubcategory ]
+                data.userInfo.correctExamCategory = [...result.data.submitResultExam.correctExamCategory]
+                data.userInfo.correctExamSubcategory = [...result.data.submitResultExam.correctExamSubcategory]
+                data.userInfo.wrongExamCategory = [...result.data.submitResultExam.wrongExamCategory]
+                data.userInfo.wrongExamSubcategory = [...result.data.submitResultExam.wrongExamSubcategory]
                 console.log(data.userInfo);
                 proxy.writeQuery({
                     query: FETCH_USERINFO_QUERY,
@@ -216,14 +217,14 @@ const QuizPage = ({ catloading, subloading, retry, showResult, setShowResult }) 
                 }
 
                 <div className="quizpage__buttons">
-                    <Button 
-                     variant='contained' color='primary' onClick={nextQuestion}>
-                     <div style={{display:'flex', flexDirection:'column', padding: '0 30px'}}>
-                    <NavigateNextIcon style={{fontSize:'40px'}}  />
-                    <Typography variant="p">Next</Typography>
-                    </div>
+                    <Button
+                        variant='contained' color='primary' onClick={nextQuestion}>
+                        <div style={{ display: 'flex', flexDirection: 'column', padding: '0 30px' }}>
+                            <NavigateNextIcon style={{ fontSize: '40px' }} />
+                            <Typography variant="p">Next</Typography>
+                        </div>
                     </Button>
-                    
+
                 </div>
 
                 <Popover
@@ -240,7 +241,10 @@ const QuizPage = ({ catloading, subloading, retry, showResult, setShowResult }) 
                         horizontal: 'center',
                     }}
                 >
-                    <Typography >The content of the Popover.</Typography>
+                    <Paper style={{ padding: 20 }}>
+                        <Typography style={{ color: correctOrWrong ? "green" : "red", fontWeight: "bolder" }} >{correctOrWrong ? "CORRECT" : "INCORRECT"}</Typography>
+                    </Paper>
+
                 </Popover>
 
 
