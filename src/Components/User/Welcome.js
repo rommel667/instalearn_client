@@ -14,7 +14,6 @@ const Welcome = () => {
 
     const [tryDemo, { data, loading }] = useMutation(TRIAL_ACCOUNT, {
         update(proxy, result) {
-            console.log("TRYDEMO", result);
             dispatch({ type: "LOGIN", payload: { user: result.data.tryDemo } })
         },
         // onError(err) {
@@ -46,13 +45,8 @@ const Welcome = () => {
                         <p style={{ fontWeight: "lighter" }}>Already have an account?</p>
                         <div onClick={() => history.push('/login')} style={{ cursor: "pointer" }}>Login</div>
                     </div>
-
                 </div>
-
             </div>
-
-
-
         </div>
 
     )
