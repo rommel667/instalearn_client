@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, } from 'react'
+import React, { useContext, useState, } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import ExamPage from '../Components/Content/ExamPage'
 import HomePage from '../Components/Content/HomePage'
@@ -30,7 +30,6 @@ const Content = () => {
     const testType = useSelector(state => state.options.testType)
     const categories = useSelector(state => state.statistics.categories)
 
-    console.log("USER", user);
     const history = useHistory()
 
 
@@ -49,7 +48,6 @@ const Content = () => {
         {
             variables: { category: catIdForCat, size: qSizeForCat },
             onCompleted() {
-                console.log("FETCHBYCAT", calledFetchByCat, calledFetchBySub);
                 initialSetup(randomQuestionsByCategory.randomQuestionsByCategory)
                 testType === 'quiz' ? history.replace('/quiz') : history.replace('/exam')
             },
@@ -60,7 +58,6 @@ const Content = () => {
         {
             variables: { category: catIdForSub, subcategory: subIdForSub, size: qSizeForSub },
             onCompleted() {
-                console.log("FETCHBYSUB", calledFetchByCat, calledFetchBySub);
                 initialSetup(randomQuestionsByCategoryAndSubcategory.randomQuestionsByCategoryAndSubcategory)
                 testType === 'quiz' ? history.replace('/quiz') : history.replace('/exam')
             }
@@ -81,7 +78,6 @@ const Content = () => {
         for (let i = 0; i < questionSize; i++) {
             tempCorrectArray = [...tempCorrectArray, questionsArray[i].answer]
         }
-        console.log(tempChosenArray);
         extraDispatch({ type: "CORRECT_ANSWERS", payload: { correctAnswers: tempCorrectArray } })
         dispatch({ type: "RETRY_TIMER_RESET", payload: { timerReset: Date.now() + 10 * 60 * 1000 } })
         dispatch({ type: "SET_CURRENT_QUESTION_NUMBER", payload: { currentQuestionNumber: 0 } })
@@ -89,23 +85,19 @@ const Content = () => {
 
 
     const startTest = () => {
-        console.log("START TEST");
         dispatch({ type: "RESET_SCORE" })
         if (subcategoryId === "All Subcategory") {
             setCatIdForCat(categoryId)
             setQSizeForCat(questionSize)
             if (calledFetchByCat) {
-                console.log("START TEST case 1");
                 refetchByCat({
                     variables: { category: catIdForCat, size: qSizeForCat },
                     onCompleted() {
-                        console.log("FETCHBYCAT", calledFetchByCat, calledFetchBySub);
                         initialSetup(randomQuestionsByCategory.randomQuestionsByCategory)
                         testType === 'quiz' ? history.replace('/quiz') : history.replace('/exam')
                     },
                 })
             } else {
-                console.log("START TEST case 2");
                 fetchByCat()
             }
         } else {
@@ -116,7 +108,6 @@ const Content = () => {
                 refetchBySub({
                     variables: { category: catIdForSub, subcategory: subIdForSub, size: qSizeForSub },
                     onCompleted() {
-                        console.log("FETCHBYCAT", calledFetchByCat, calledFetchBySub);
                         initialSetup(randomQuestionsByCategoryAndSubcategory.randomQuestionsByCategoryAndSubcategory)
                         testType === 'quiz' ? history.replace('/quiz') : history.replace('/exam')
                     },
@@ -133,8 +124,7 @@ const Content = () => {
         dispatch({ type: "UNSHOW_RESULTS" })
         dispatch({ type: "RESET_SCORE" })
         history.replace('/')
-        console.log("RETRY");
-
+        
         if (subcategoryId === "All Subcategory") {
             refetchByCat({
                 variables: { category: categoryId, size: questionSize },

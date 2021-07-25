@@ -98,14 +98,12 @@ const ProfileModal = ({ showProfile, cancelProfile }) => {
         data.append('file', e.target.files[0])
         data.append('upload_preset', 'instagram')
         data.append('cloud_name', 'rommel')
-        console.log(data);
         fetch('https://api.cloudinary.com/v1_1/rommel/image/upload', {
             method: 'post',
             body: data
         })
             .then(res => res.json())
             .then(async data => {
-                console.log("URL", data.secure_url);
                 setPhotoUrl(data.secure_url)
             })
             .catch(err => {

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Doughnut, Pie } from 'react-chartjs-2'
-import { Chart } from 'chart.js'
+import React, { useState } from 'react'
+import { Pie } from 'react-chartjs-2'
 import { useMedia } from 'react-use-media';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux'

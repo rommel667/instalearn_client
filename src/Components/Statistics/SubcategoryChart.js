@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { HorizontalBar } from 'react-chartjs-2'
 import { useMedia } from 'react-use-media';
 import { Card, CardActionArea, CardContent, CircularProgress, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Typography } from '@material-ui/core';

@@ -1,31 +1,17 @@
 import React, { useEffect, useState, useContext } from 'react'
 import './QuizPage.css'
-import { useLazyQuery, useMutation, useQuery } from '@apollo/react-hooks'
+import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import QuizResult from '../Results/QuizResult'
-import { Button, Paper, Popover, Typography, Box, Avatar } from '@material-ui/core'
+import { Button, Paper, Popover, Typography } from '@material-ui/core'
 import { ExtraContext } from '../../App'
-import { makeStyles } from '@material-ui/core/styles';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 
-const useStyles = makeStyles((theme) => ({
-    small: {
-        width: theme.spacing(3),
-        height: theme.spacing(3),
-    },
-    large: {
-        width: theme.spacing(7),
-        height: theme.spacing(7),
-    },
-}));
-
-
 const QuizPage = ({ catloading, subloading, retry, showResult, setShowResult }) => {
-    const classes = useStyles();
-
+    
     const { state, extraDispatch } = useContext(ExtraContext)
 
 
@@ -56,7 +42,6 @@ const QuizPage = ({ catloading, subloading, retry, showResult, setShowResult }) 
 
     const [submitResult, { loading }] = useMutation(SUBMIT_QUIZ_RESULT, {
         update(proxy, result) {
-            console.log(result);
             const data = proxy.readQuery({
                 query: FETCH_USERINFO_QUERY
             })
@@ -65,7 +50,6 @@ const QuizPage = ({ catloading, subloading, retry, showResult, setShowResult }) 
                 data.userInfo.correctExamSubcategory = [...result.data.submitResultExam.correctExamSubcategory]
                 data.userInfo.wrongExamCategory = [...result.data.submitResultExam.wrongExamCategory]
                 data.userInfo.wrongExamSubcategory = [...result.data.submitResultExam.wrongExamSubcategory]
-                console.log(data.userInfo);
                 proxy.writeQuery({
                     query: FETCH_USERINFO_QUERY,
                     data
@@ -79,7 +63,6 @@ const QuizPage = ({ catloading, subloading, retry, showResult, setShowResult }) 
     })
 
     useEffect(() => {
-        console.log("USE EFFECT CASE 1");
         if (state.randomQuestions.length === 0) {
             history.push('./')
         } else {
@@ -87,8 +70,6 @@ const QuizPage = ({ catloading, subloading, retry, showResult, setShowResult }) 
         }
 
     }, [])
-
-
 
 
     const nextQuestion = () => {
@@ -131,11 +112,7 @@ const QuizPage = ({ catloading, subloading, retry, showResult, setShowResult }) 
         dispatch({ type: "SHOW_CORRECT_OR_WRONG_MODAL", payload: { showCorrectOrWrong: true } })
     }
 
-
-
-
     const submitHandler = () => {
-        // dispatch({ type: "SHOW_EXAM_RESULT", payload: true })
         let tempCorrectArray = []
         let tempWrongArray = []
         state.randomQuestions.map((question, index) => {
@@ -145,21 +122,16 @@ const QuizPage = ({ catloading, subloading, retry, showResult, setShowResult }) 
                 tempWrongArray.push(question._id)
             }
         })
-        console.log(tempCorrectArray, tempWrongArray);
         submitResult({
             variables: {
                 correctArray: tempCorrectArray,
                 wrongArray: tempWrongArray
             },
             onCompleted() {
-                // dispatch({ type: "RANDOM_QUESTIONS", payload: [] })
-                // dispatch({ type: "CHOOSE_ANSWER", payload: [] })
-                // dispatch({ type: "CORRECT_ANSWER", payload: [] })
+                
             }
         })
     }
-
-
 
     if (showCorrectOrWrong) {
         setTimeout(() => dispatch({ type: "SHOW_CORRECT_OR_WRONG_MODAL", payload: { showCorrectOrWrong: false } }), 1500)

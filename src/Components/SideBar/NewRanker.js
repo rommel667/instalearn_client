@@ -1,8 +1,7 @@
 import React from 'react'
-import { Avatar, Card, CardActions, CardContent, CardHeader, IconButton, Typography } from '@material-ui/core'
+import { Avatar, Card, CardContent, Typography } from '@material-ui/core'
 import Moment from 'react-moment'
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
+
 
 
 const NewRanker = ({ item }) => {

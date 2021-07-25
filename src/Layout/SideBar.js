@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './SideBar.css'
-import { useMutation, useQuery, useSubscription } from '@apollo/client';
-import { FETCH_LEADERBOARD_SUBSCRIPTION, FETCH_NEWCHAT_SUBSCRIPTION } from '../Layout';
+import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag'
 import Scroll from 'react-scroll'
 import Chat from '../Components/SideBar/Chat';
 import NewRanker from '../Components/SideBar/NewRanker';
-import { Button, Divider, Icon, Paper, TextareaAutosize, TextField, Tooltip, Typography } from '@material-ui/core';
-import MessageIcon from '@material-ui/icons/Message';
+import { Button, Divider, Paper, TextField, Tooltip, Typography } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import SendIcon from '@material-ui/icons/Send';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -38,13 +36,6 @@ const SideBar = () => {
             //   setError(err.graphQLErrors[0].message.split(': ')[1]);
         }
     })
-
-
-
-
-
-
-
 
     useEffect(() => {
 
@@ -85,8 +76,6 @@ const SideBar = () => {
         newChat()
         setMessage('')
     }
-
-
 
 
     return (

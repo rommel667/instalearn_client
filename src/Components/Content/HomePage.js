@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import './HomePage.css'
 import { useLazyQuery, useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
-import { useHistory } from 'react-router-dom'
 import Math from '../../assets/math.png'
 import Elecs from '../../assets/electronics.png'
 import Comms from '../../assets/est.png'
@@ -16,13 +15,9 @@ import { useMedia } from 'react-use-media';
 
 const HomePage = ({ startQuiz, startExam }) => {
 
-
-    const history = useHistory()
     const [visible, setVisible] = useState(false)
     const matches = useMedia('(min-width: 768px)');
     const questionSize = useSelector(state => state.settings.questionSize)
-
-
 
     const dispatch = useDispatch()
 
@@ -48,7 +43,6 @@ const HomePage = ({ startQuiz, startExam }) => {
 
 
     const choseQuiz = (categoryId) => {
-        console.log(categoryId);
         dispatch({ type: "UNSHOW_RESULTS" })
         dispatch({ type: "CATEGORY_ID", payload: { categoryId: categoryId } })
         setVisible(true)

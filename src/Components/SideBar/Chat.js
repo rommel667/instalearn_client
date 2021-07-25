@@ -1,8 +1,7 @@
 import React from 'react'
 import Moment from 'react-moment'
-import { Avatar, Card, CardActions, CardContent, CardHeader, IconButton, Typography } from '@material-ui/core';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
+import { Avatar, Card, CardContent, Typography } from '@material-ui/core';
+
 
 
 const Chat = ({ item }) => {

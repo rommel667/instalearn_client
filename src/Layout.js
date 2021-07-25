@@ -67,10 +67,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
-
-
-
 const Layout = (props) => {
 
     
@@ -144,7 +140,6 @@ const Layout = (props) => {
         {
             onCompleted() {
                 dispatch({ type: "CHATS", payload: { chats: chats.chats } })
-                console.log("CHATS", chats);
             }
         }
     )

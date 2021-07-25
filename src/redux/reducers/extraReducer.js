@@ -7,7 +7,6 @@ export const initialState = {
 
 
 export const extraReducer = (state, action) => {
-    console.log("PAYLOAD", action.payload);
     switch (action.type) {
         case "RANDOM_QUESTIONS": {
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -76,7 +76,6 @@ const OptionsModal = ({ visible, setVisible, cancel, startQuiz, startExam, categ
   }
 
   const handleChangeSubcategory = (event) => {
-    console.log(categoryId);
     setSubcategory(event.target.value)
     if (event.target.value !== "" && event.target.value !== "All Subcategory") {
       categories && categories.categories.map(cat => {

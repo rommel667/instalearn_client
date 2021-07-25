@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './StatisticsPage.css'
 import { useLazyQuery, useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
@@ -6,7 +6,6 @@ import CategoryChart from '../../Components/Statistics/CategoryChart'
 import SubcategoryChart from '../../Components/Statistics/SubcategoryChart'
 import { useSelector, useDispatch } from 'react-redux'
 import { FETCH_CATEGORIES_QUERY } from '../../Layout'
-import { CircularProgress } from '@material-ui/core'
 
 
 const StatisticsPage = () => {
@@ -15,7 +14,6 @@ const StatisticsPage = () => {
     const categoriesStats = useSelector(state => state.statistics.categories)
     const subcategoriesStats = useSelector(state => state.statistics.subcategories)
 
-
     const [correctArrayCategory, setCorrectArrayCategory] = useState([])
     const [correctArraySubcategory, setCorrectArraySubcategory] = useState([])
     const [wrongArrayCategory, setWrongArrayCategory] = useState([])
@@ -23,10 +21,6 @@ const StatisticsPage = () => {
 
     const [optionCatChart, setOptionCatChart] = useState('both')
     const [optionSubChart, setOptionSubChart] = useState('both')
-
-
-
-
 
     const { loading: catLoading, data: categories } = useQuery(
         FETCH_CATEGORIES_QUERY,
@@ -74,7 +68,6 @@ const StatisticsPage = () => {
         setWrongArrayCategory([])
         setWrongArraySubcategory([])
         
-
         if (optionCatChart === "both") {
             setCorrectArrayCategory([ ...userInfo.userInfo.correctExamCategory, ...userInfo.userInfo.correctQuizCategory ])
             setWrongArrayCategory([ ...userInfo.userInfo.wrongExamCategory, ...userInfo.userInfo.wrongQuizCategory ])
@@ -100,14 +93,7 @@ const StatisticsPage = () => {
             setCorrectArraySubcategory([ ...userInfo.userInfo.correctQuizSubcategory ])
             setWrongArraySubcategory([ ...userInfo.userInfo.wrongQuizSubcategory ])
         }
-
-
     }
-
-    
-
-
-
 
     return (
         <div className="statisticspage">

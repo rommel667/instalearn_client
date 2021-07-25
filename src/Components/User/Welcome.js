@@ -1,6 +1,5 @@
 import React from 'react'
 import './Welcome.css'
-import bgImage from '../../assets/welcome.jpg'
 import { Button } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import { useMutation } from '@apollo/client'

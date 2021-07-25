@@ -13,7 +13,6 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store'
-import Moment from 'react-moment';
 import 'moment-timezone';
 import { extraReducer, initialState } from './redux/reducers/extraReducer'
 

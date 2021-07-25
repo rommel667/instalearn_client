@@ -1,13 +1,9 @@
-import React, { useState, useContext } from 'react'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Button, Paper, Typography } from '@material-ui/core'
-import { useDispatch, useSelector } from 'react-redux'
-import { ExtraContext } from '../../App'
+import { Button, Paper } from '@material-ui/core'
 
 
 const ExamAnswersHeader = ({ retry }) => {
-
-    const dispatch = useDispatch()
 
     const history = useHistory()
 

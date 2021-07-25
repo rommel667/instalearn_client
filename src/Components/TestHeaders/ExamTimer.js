@@ -1,5 +1,5 @@
 import { Paper } from '@material-ui/core';
-import React, { useState } from 'react';
+import React from 'react';
 import Countdown from 'react-countdown';
 
 

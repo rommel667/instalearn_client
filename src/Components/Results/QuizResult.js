@@ -1,7 +1,6 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { Doughnut } from 'react-chartjs-2'
-import { Chart } from 'chart.js'
 import { useHistory } from 'react-router-dom'
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -60,7 +59,6 @@ const QuizResult = ({ open, retry }) => {
   };
 
 
-
   const closeModal = () => {
     dispatch({ type: "UNSHOW_RESULTS" })
     dispatch({ type: "RESET_OPTIONS" })
@@ -68,7 +66,6 @@ const QuizResult = ({ open, retry }) => {
     dispatch({ type: "RESET_SCORE" })
     history.push('/')
   }
-
 
 
   return (

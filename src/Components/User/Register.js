@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import './Register.css'
 import { Button, Paper, TextField } from '@material-ui/core'
-import GoogleLogin from 'react-google-login'
 import { useMutation } from '@apollo/react-hooks'
 import { useHistory } from 'react-router-dom'
 import gql from 'graphql-tag'
-import { useDispatch } from 'react-redux'
 import { useMedia } from 'react-use-media';
 
 const Register = () => {
@@ -19,11 +17,8 @@ const Register = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
-
-
     const [addUser, { loading }] = useMutation(REGISTER_USER, {
         update(proxy, result) {
-            console.log(result);
             localStorage.setItem('email', result.data.registerUser.email)
         },
         variables: {

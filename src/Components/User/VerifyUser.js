@@ -24,7 +24,6 @@ const VerifyUser = () => {
 
     const [verifyUser, { loading }] = useMutation(VERIFY_USER, {
         update(proxy, result) {
-            console.log(result);
             localStorage.removeItem('email')
             logInDispatch({ type: "LOGIN", payload: {user : result.data.verifyUser} })
         },

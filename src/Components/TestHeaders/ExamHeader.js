@@ -22,17 +22,14 @@ const ExamHeader = () => {
 
     const [submitResult, { loading }] = useMutation(SUBMIT_EXAM_RESULT, {
         update(proxy, result) {
-            console.log(result);
             const data = proxy.readQuery({
                 query: FETCH_USERINFO_QUERY
             })
-            console.log(data);
             if (data) {
                 data.userInfo.correctExamCategory = [ ...result.data.submitResultExam.correctExamCategory ]
                 data.userInfo.correctExamSubcategory = [ ...result.data.submitResultExam.correctExamSubcategory ]
                 data.userInfo.wrongExamCategory = [ ...result.data.submitResultExam.wrongExamCategory ]
                 data.userInfo.wrongExamSubcategory = [ ...result.data.submitResultExam.wrongExamSubcategory ]
-                console.log(data.userInfo);
                 proxy.writeQuery({
                     query: FETCH_USERINFO_QUERY,
                     data
@@ -40,8 +37,6 @@ const ExamHeader = () => {
             }
 
         },
-        
-
         onError(err) {
             //   setError(err.graphQLErrors[0].message.split(': ')[1]);
             console.log(err);
@@ -66,7 +61,6 @@ const ExamHeader = () => {
                 tempWrongArray.push(question._id)
             }
         })
-        console.log(tempCorrectArray, tempWrongArray);
         submitResult({
             variables: {
                 correctArray: tempCorrectArray,

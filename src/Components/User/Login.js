@@ -22,7 +22,6 @@ const Login = () => {
 
     const [loginUser, { data: loginData, loading: loginLoading }] = useMutation(LOGIN_USER, {
         update(proxy, result) {
-            console.log("RESULT", result);
             setEmail('')
             setPassword('')
             logInDispatch({ type: "LOGIN", payload: { user: result.data.login } })
@@ -38,7 +37,6 @@ const Login = () => {
 
     const [verifyUser, { loading }] = useMutation(VERIFY_USER, {
         update(proxy, result) {
-            console.log(result);
             localStorage.removeItem('email')
             logInDispatch({ type: "LOGIN", payload: { user: result.data.verifyUser } })
         },
@@ -49,7 +47,6 @@ const Login = () => {
 
     const [googleSignin, { data: signInWithGoogle, loading: googleLoading }] = useMutation(SIGN_IN_WITH_GOOGLE, {
         update(proxy, result) {
-            console.log("GOOGLE RESULT", result);
             logInDispatch({ type: "LOGIN", payload: { user: result.data.signInWithGoogle } })
         },
         // onError(err) {
@@ -62,12 +59,10 @@ const Login = () => {
             return
         }
         e.preventDefault()
-        console.log(email, password);
         loginUser()
     }
 
     const responseGoogle = (response) => {
-        console.log("GOOGLE", response)
         googleSignin({
             variables: {
                 name: response.profileObj.name, email: response.profileObj.email, photo: response.profileObj.imageUrl, token: response.tokenId

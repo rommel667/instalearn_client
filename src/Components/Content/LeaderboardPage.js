@@ -1,13 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './LeaderboardPage.css'
-import { useQuery, useSubscription } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
 import Moment from 'react-moment'
 import { makeStyles } from '@material-ui/core/styles';
-import { deepOrange, deepPurple, deepGreen, green } from '@material-ui/core/colors';
-import { useSelector, useDispatch } from 'react-redux'
+import { deepPurple, green } from '@material-ui/core/colors';
+import { useSelector } from 'react-redux'
 import { Avatar, Card, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Typography } from '@material-ui/core'
-import { FETCH_LEADERBOARD_QUERY, FETCH_LEADERBOARD_SUBSCRIPTION } from '../../Layout'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,11 +28,9 @@ const useStyles = makeStyles((theme) => ({
 const LeaderboardPage = () => {
     const classes = useStyles();
 
-    const dispatch = useDispatch()
     const leaderboards = useSelector(state => state.leaderboards.leaderboards)
 
     const [category, setCategory] = useState('OVERALL')
-
 
     const handleRadioChange = (event) => {
         setCategory(event.target.value);
@@ -63,7 +58,6 @@ const LeaderboardPage = () => {
 
             <Paper>
                 {leaderboards.filter(lb => lb.category === category).map((ranker, index) => {
-                    console.log("MAPPING LB", ranker)
                     if (index <= 4) {
                         return (
                             <Card key={ranker._id} style={{display:'flex', alignItems: 'center', padding: '10px 15px', margin: '5px 0'}}>
@@ -74,22 +68,17 @@ const LeaderboardPage = () => {
                                     <Typography variant="subtitle1" color="textSecondary">{<Moment fromNow>{ranker.updatedAt}</Moment>}</Typography>
                                     <Typography variant="subtitle1" color="textSecondary">{`Total MCQs Answered: ${ranker.totalQuestions}`}</Typography>
                                 </div>
-                                {/* <Typography variant="body2" color="textSecondary" component="p">{`${(ranker.rating).toFixed(2)} %`}</Typography> */}
-
+                            
                                 <Avatar variant="circle" className={classes.rating}>{`${(ranker.rating).toFixed(2)} %`}</Avatar>
                             </Card>
                         )
                     }
+                    return null
                 })}
             </Paper>
         </div>
     )
 }
-
-
-
-
-
 
 
 export default LeaderboardPage
