@@ -64,6 +64,7 @@ const OptionsModal = ({ visible, setVisible, cancel, startQuiz, startExam, categ
   const testType = useSelector(state => state.options.testType)
 
   const questionSize = useSelector(state => state.settings.questionSize)
+  const theme = useSelector(state => state.settings.theme)
 
 
   const dispatch = useDispatch()
@@ -151,8 +152,8 @@ const OptionsModal = ({ visible, setVisible, cancel, startQuiz, startExam, categ
           </div>
 
           <Button color="secondary" onClick={cancel}>CANCEL</Button>
-          {testType === 'quiz' && <Button color="primary" onClick={startQuiz}>START POP QUIZ</Button>}
-          {testType === 'exam' && <Button color="primary" onClick={startExam}>START MOCK EXAM</Button>}
+          {testType === 'quiz' && <Button color={theme === 'dark' ? 'default' : 'primary'} onClick={startQuiz}>START POP QUIZ</Button>}
+          {testType === 'exam' && <Button color={theme === 'dark' ? 'default' : 'primary'} onClick={startExam}>START MOCK EXAM</Button>}
 
 
         </div>

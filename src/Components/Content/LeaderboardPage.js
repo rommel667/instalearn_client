@@ -6,7 +6,7 @@ import Moment from 'react-moment'
 import { makeStyles } from '@material-ui/core/styles';
 import { deepOrange, deepPurple, deepGreen, green } from '@material-ui/core/colors';
 import { useSelector, useDispatch } from 'react-redux'
-import { Avatar, Card, CardContent, CardHeader, CircularProgress, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Typography } from '@material-ui/core'
+import { Avatar, Card, FormControl, FormControlLabel, FormLabel, Paper, Radio, RadioGroup, Typography } from '@material-ui/core'
 import { FETCH_LEADERBOARD_QUERY, FETCH_LEADERBOARD_SUBSCRIPTION } from '../../Layout'
 
 
@@ -76,7 +76,7 @@ const LeaderboardPage = () => {
                                 </div>
                                 {/* <Typography variant="body2" color="textSecondary" component="p">{`${(ranker.rating).toFixed(2)} %`}</Typography> */}
 
-                                <Avatar variant="square" className={classes.rating}>{`${(ranker.rating).toFixed(2)} %`}</Avatar>
+                                <Avatar variant="circle" className={classes.rating}>{`${(ranker.rating).toFixed(2)} %`}</Avatar>
                             </Card>
                         )
                     }

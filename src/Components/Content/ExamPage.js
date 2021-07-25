@@ -56,7 +56,7 @@ const ExamPage = ({ catloading, subloading, retry }) => {
                                 <div style={{marginBottom: '10px', display:'flex', flexDirection:'column', gap:'1px'}} key={question._id}>
                                     <Paper style={{padding: '5px'}}>
                                         <Typography variant="h6">
-                                            {question?.question} {question.answer} {question.image ? <img src='https://react.semantic-ui.com/images/avatar/large/patrick.png' alt="question" /> : null}
+                                            {question?.question} {question.image ? <img src='https://react.semantic-ui.com/images/avatar/large/patrick.png' alt="question" /> : null}
                                         </Typography>
                                     </Paper>
 

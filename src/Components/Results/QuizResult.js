@@ -16,11 +16,15 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   paper: {
+    display: 'flex',
+    flexDirection: 'column',
     backgroundColor: theme.palette.background.paper,
     border: '2px solid green',
     borderRadius: '10px',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 }));
 
@@ -32,6 +36,7 @@ const QuizResult = ({ open, retry }) => {
   const dispatch = useDispatch()
   const questionSize = useSelector(state => state.settings.questionSize)
   const score = useSelector(state => state.test.score)
+  const theme = useSelector(state => state.settings.theme)
 
 
 
@@ -101,9 +106,11 @@ const QuizResult = ({ open, retry }) => {
               }}
             />
           </div>
+          <div style={{marginTop: 10}}>
+            <Button color='secondary' onClick={closeModal}>Back to Menu</Button>
+            <Button color={theme === 'dark' ? 'default' : 'primary'} onClick={retry}>Retry</Button>
+          </div>
 
-          <Button color='secondary' onClick={closeModal}>Back to Menu</Button>
-          <Button color='primary' onClick={retry}>Retry</Button>
         </div>
       </Fade>
     </Modal>

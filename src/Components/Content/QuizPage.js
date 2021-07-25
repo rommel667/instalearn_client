@@ -171,7 +171,7 @@ const QuizPage = ({ catloading, subloading, retry, showResult, setShowResult }) 
                 {showAnswer ?
                     <div className="quizpage__quiz">
                         <Paper className="quizpage__question">
-                            <Typography variant="h5">{question?.question} {question?.answer}</Typography>
+                            <Typography variant="h5">{question?.question}</Typography>
                         </Paper>
 
                         <div className="quizpage__options">

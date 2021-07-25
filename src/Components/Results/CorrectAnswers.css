@@ -1,0 +1,14 @@
+.examanswers {
+    height: 80vh;
+    padding: 10px 20px;
+    overflow-y: scroll;
+}
+
+.examanswers::-webkit-scrollbar {
+    display: none;
+  }
+
+.examanswers {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

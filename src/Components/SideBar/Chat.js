@@ -13,10 +13,8 @@ const Chat = ({ item }) => {
                 <div style={{ display: 'flex', gap: '10px' }}>
                     <Avatar alt="Remy Sharp" src={item.senderPhoto} />
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <div style={{ display: 'flex', gap: '5px' }}>
-                            <Typography variant="body2" color="textPrimary" component="h4">{item.senderName}</Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">{<Moment fromNow>{item.createdAt}</Moment>}</Typography>
-                        </div>
+                        <Typography variant="body2" color="textPrimary" component="h4">{item.senderName}</Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">{<Moment fromNow>{item.createdAt}</Moment>}</Typography>
                         <Typography variant="body2" color="textPrimary" component="p">{item.message}</Typography>
                     </div>
                 </div>

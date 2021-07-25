@@ -1,80 +1,92 @@
-import React, { useEffect, useContext } from 'react'
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import React, { useContext } from 'react'
+import './CorrectAnswers.css'
 import { Paper, Radio, Typography } from '@material-ui/core';
-import { useSelector } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+import { green } from '@material-ui/core/colors';
+import ExamAnswersHeader from '../TestHeaders/ExamAnswersHeader';
+import { ExtraContext } from '../../App';
 
+const GreenRadio = withStyles({
+    root: {
+        color: green[400],
+        '&$checked': {
+            color: green[600],
+        },
+    },
+    checked: {},
+})((props) => <Radio color="default" {...props} />);
 
+const CorrectAnswers = ({ retry }) => {
 
-const CorrectAnswers = () => {
+    const { state, extraDispatch } = useContext(ExtraContext)
 
-    const randomQuestions = useSelector(state => state.questions.randomQuestions)
-    const chosenAnswers = useSelector(state => state.questions.chosenAnswers)
-    const correctAnswers = useSelector(state => state.questions.correctAnswers)
+    const { randomQuestions, chosenAnswers, correctAnswers } = state
 
     return (
 
 
         <div>
+            <ExamAnswersHeader retry={retry} />
+            <div className="examanswers">
 
-            <div>
                 {randomQuestions?.map((question, index) => {
                     return (
 
-                        <div key={question._id}>
-                            <Paper>
-                                {chosenAnswers[index] === correctAnswers[index] ? <CheckCircleIcon /> : <HighlightOffIcon />}
-                                <Typography>
+                        <div style={{ marginBottom: '10px', display: 'flex', flexDirection: 'column', gap: '1px' }} key={question._id}>
+                            <Paper style={{ padding: '5px' }}>
+
+                                <Typography variant="h6">
                                     {question?.question}
                                 </Typography>
-                                {question.image ? <img  src='https://react.semantic-ui.com/images/avatar/large/patrick.png' /> : null}
+                                {question.image ? <img src='https://react.semantic-ui.com/images/avatar/large/patrick.png' alt='question' /> : null}
                             </Paper>
 
 
                             <Paper
-                                style={{ backgroundColor: (chosenAnswers[index] === correctAnswers[index] && chosenAnswers[index] === question.option1 || correctAnswers[index] === question.option1) ? 'green' : (chosenAnswers[index] !== correctAnswers[index] && chosenAnswers[index] === question.option1) ? 'red' : 'grey' }}
+                                style={{ display: 'flex', alignItems: 'center', backgroundColor: (chosenAnswers[index] === correctAnswers[index] && chosenAnswers[index] === question.option1 || correctAnswers[index] === question.option1) ? 'green' : (chosenAnswers[index] !== correctAnswers[index] && chosenAnswers[index] === question.option1) ? 'red' : 'grey' }}
                             >
-                                <Radio
-                                    checked={chosenAnswers[index] === question.option2}
+                                <GreenRadio
+                                    checked={chosenAnswers[index] === question.option1}
                                     name={question._id}
                                 />
                                 <Typography>{question.option1}</Typography>
                             </Paper>
 
                             <Paper
-                                style={{ backgroundColor: (chosenAnswers[index] === correctAnswers[index] && chosenAnswers[index] === question.option2 || correctAnswers[index] === question.option2) ? 'green' : (chosenAnswers[index] !== correctAnswers[index] && chosenAnswers[index] === question.option2) ? 'red' : 'grey' }}
+                                style={{ display: 'flex', alignItems: 'center', backgroundColor: (chosenAnswers[index] === correctAnswers[index] && chosenAnswers[index] === question.option2 || correctAnswers[index] === question.option2) ? 'green' : (chosenAnswers[index] !== correctAnswers[index] && chosenAnswers[index] === question.option2) ? 'red' : 'grey' }}
                             >
-                                <Radio
-                                    checked={chosenAnswers[index] === question.option3}
+                                <GreenRadio
+                                    checked={chosenAnswers[index] === question.option2}
                                     name={question._id}
                                 />
                                 <Typography>{question.option2}</Typography>
                             </Paper>
 
                             <Paper
-                                style={{ backgroundColor: (chosenAnswers[index] === correctAnswers[index] && chosenAnswers[index] === question.option3 || correctAnswers[index] === question.option3) ? 'green' : (chosenAnswers[index] !== correctAnswers[index] && chosenAnswers[index] === question.option3) ? 'red' : 'grey' }}
+                                style={{ display: 'flex', alignItems: 'center', backgroundColor: (chosenAnswers[index] === correctAnswers[index] && chosenAnswers[index] === question.option3 || correctAnswers[index] === question.option3) ? 'green' : (chosenAnswers[index] !== correctAnswers[index] && chosenAnswers[index] === question.option3) ? 'red' : 'grey' }}
                             >
-                                <Radio
-                                    checked={chosenAnswers[index] === question.option4}
+                                <GreenRadio
+                                    checked={chosenAnswers[index] === question.option3}
                                     name={question._id}
                                 />
                                 <Typography>{question.option3}</Typography>
                             </Paper>
 
                             <Paper
-                                style={{ backgroundColor: (chosenAnswers[index] === correctAnswers[index] && chosenAnswers[index] === question.option4 || correctAnswers[index] === question.option4) ? 'green' : (chosenAnswers[index] !== correctAnswers[index] && chosenAnswers[index] === question.option4) ? 'red' : 'grey' }}
+                                style={{ display: 'flex', alignItems: 'center', backgroundColor: (chosenAnswers[index] === correctAnswers[index] && chosenAnswers[index] === question.option4 || correctAnswers[index] === question.option4) ? 'green' : (chosenAnswers[index] !== correctAnswers[index] && chosenAnswers[index] === question.option4) ? 'red' : 'grey' }}
                             >
-                                <Radio
-                                    checked={chosenAnswers[index] === question.option1}
+                                <GreenRadio
+                                    checked={chosenAnswers[index] === question.option4}
                                     name={question._id}
                                 />
                                 <Typography>{question.option4}</Typography>
                             </Paper>
                         </div>)
                 })}
+
             </div>
 
-            
+
         </div>
     )
 }

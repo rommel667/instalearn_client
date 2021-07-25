@@ -7,7 +7,7 @@ import Content from './Layout/Content';
 import SideDrawer from './Layout/SideDrawer';
 import { ThemeProvider, createMuiTheme, Grid } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, Route, useHistory, useLocation } from 'react-router-dom';
+import { Route, useHistory, useLocation } from 'react-router-dom';
 import QuizHeader from './Components/TestHeaders/QuizHeader';
 import ExamHeader from './Components/TestHeaders/ExamHeader';
 import { makeStyles } from '@material-ui/core/styles';

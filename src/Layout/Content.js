@@ -14,6 +14,7 @@ import Login from '../Components/User/Login'
 import Register from '../Components/User/Register'
 import VerifyUser from '../Components/User/VerifyUser'
 import { ExtraContext } from '../App'
+import CorrectAnswers from '../Components/Results/CorrectAnswers'
 
 
 
@@ -89,7 +90,7 @@ const Content = () => {
 
     const startTest = () => {
         console.log("START TEST");
-
+        dispatch({ type: "RESET_SCORE" })
         if (subcategoryId === "All Subcategory") {
             setCatIdForCat(categoryId)
             setQSizeForCat(questionSize)
@@ -130,6 +131,7 @@ const Content = () => {
 
     const retryHandler = () => {
         dispatch({ type: "UNSHOW_RESULTS" })
+        dispatch({ type: "RESET_SCORE" })
         history.replace('/')
         console.log("RETRY");
 
@@ -183,6 +185,12 @@ const Content = () => {
                         <ExamPage {...props}
                             catloading={catloading}
                             subloading={subloading}
+                            retry={retryHandler}
+                        />)}
+                    />
+
+                    <Route path='/examanswers' render={(props) => (
+                        <CorrectAnswers {...props}
                             retry={retryHandler}
                         />)}
                     />

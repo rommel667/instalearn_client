@@ -16,11 +16,15 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
     },
     paper: {
+        display: 'flex',
+        flexDirection: 'column',
         backgroundColor: theme.palette.background.paper,
         border: '2px solid green',
         borderRadius: '10px',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 }));
 
@@ -32,6 +36,7 @@ const ExamResult = ({ open, retry }) => {
     const dispatch = useDispatch()
     const questionSize = useSelector(state => state.settings.questionSize)
     const score = useSelector(state => state.test.score)
+    const theme = useSelector(state => state.settings.theme)
 
 
 
@@ -58,10 +63,15 @@ const ExamResult = ({ open, retry }) => {
 
     const closeModal = () => {
         dispatch({ type: "UNSHOW_RESULTS" })
-        dispatch({ type: "RESET_OPTIONS" })
-        dispatch({ type: "RESET_QUESTIONS" })
-        dispatch({ type: "RESET_SCORE" })
+        // dispatch({ type: "RESET_OPTIONS" })
+        // dispatch({ type: "RESET_QUESTIONS" })
+        
         history.push('/')
+    }
+
+    const showAnswers = () => {
+        dispatch({ type: "UNSHOW_RESULTS" })
+        history.push('/examanswers')
     }
 
 
@@ -102,9 +112,12 @@ const ExamResult = ({ open, retry }) => {
                     />
                 </div>
                 
-                
+                <div>
                 <Button color='secondary' onClick={closeModal}>Back to Menu</Button>
-                <Button color='primary' onClick={retry}>Retry</Button>
+                <Button color='secondary' onClick={showAnswers}>Show Answers</Button>
+                <Button color={theme === 'dark' ? 'default' : 'primary'} onClick={retry}>Retry</Button>
+                </div>
+                
             </div>
 
 
