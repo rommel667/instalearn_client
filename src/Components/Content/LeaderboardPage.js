@@ -63,7 +63,7 @@ const LeaderboardPage = () => {
 
             <Paper>
                 {leaderboards.map((ranker, index) => {
-                    console.log("MAPPING LB", leaderboards.length)
+                    console.log("MAPPING LB", ranker)
                     if (ranker.category === category) {
                         return (
                             <Card key={ranker._id} style={{display:'flex', alignItems: 'center', padding: '10px 15px', margin: '5px 0'}}>

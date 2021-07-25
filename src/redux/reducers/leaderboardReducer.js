@@ -13,7 +13,7 @@ const leaderboards = (state = initialState, action) => {
             }
         }
         case "NEW_LEADERBOARD": {
-            const filteredLeaderboards = state.leaderboards.filter(lb => lb._id !== action.payload.newLeaderboard._id)
+            const filteredLeaderboards = state.leaderboards.filter(lb => lb._id !== action.payload.newLeaderboard._id && lb.category === action.payload.newLeaderboard.category)
             console.log("NEW LB",action.payload.newLeaderboard)
             console.log("FILTERED LB",filteredLeaderboards);
             const newLeaderboards = [ ...filteredLeaderboards, action.payload.newLeaderboard ].sort((a,b) => b.rating - a.rating)
