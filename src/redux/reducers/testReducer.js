@@ -53,6 +53,12 @@ const test = (state = initialState, action) => {
                 score: action.payload.score
             }
         }
+        case "RESET_SCORE": {
+            return {
+                ...state,
+                score: 0
+            }
+        }
         case "SET_CURRENT_QUESTION_NUMBER": {
             return {
                 ...state,
@@ -74,7 +80,8 @@ const test = (state = initialState, action) => {
         case "RETRY_TIMER_RESET": {
             return {
                 ...state,
-                timerReset: action.payload.timerReset
+                timerReset: action.payload.timerReset,
+                score: 0
             }
         }
         case "LOGOUT": {

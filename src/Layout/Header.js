@@ -168,8 +168,9 @@ const Header = ({ handleDrawerOpen, theme, user }) => {
             </div> : null}
 
 
-
-          {user ?
+          
+            {/* THINK OF A FEATURE TO UTILIZE THIS SEARCH FUNCTION  */}
+          {/* {user ?
             <div style={{ flexGrow: matches ? null : '1' }} className={classes.search}>
               <div className={classes.searchIcon}>
                 <Search />
@@ -182,7 +183,7 @@ const Header = ({ handleDrawerOpen, theme, user }) => {
                 }}
                 inputProps={{ 'aria-label': 'search' }}
               />
-            </div> : null}
+            </div> : null} */}
 
 
 

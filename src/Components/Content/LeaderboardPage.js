@@ -71,8 +71,8 @@ const LeaderboardPage = () => {
                                 <Avatar className={classes.avatar} src={ranker.ranker.photo} />
                                 <div style={{display:'flex', flexDirection: 'column'}}>
                                     <Typography variant="h5" color="textPrimary">{ranker.ranker.name}</Typography>
-                                    <Typography variant="p" color="textSecondary">{<Moment fromNow>{ranker.updatedAt}</Moment>}</Typography>
-                                    <Typography variant="p" color="textSecondary">{`Total MCQs Answered: ${ranker.totalQuestions}`}</Typography>
+                                    <Typography variant="subtitle1" color="textSecondary">{<Moment fromNow>{ranker.updatedAt}</Moment>}</Typography>
+                                    <Typography variant="subtitle1" color="textSecondary">{`Total MCQs Answered: ${ranker.totalQuestions}`}</Typography>
                                 </div>
                                 {/* <Typography variant="body2" color="textSecondary" component="p">{`${(ranker.rating).toFixed(2)} %`}</Typography> */}
 

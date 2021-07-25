@@ -24,8 +24,9 @@ const Welcome = () => {
     return (
         <div className="welcome">
 
-            <div class="bg-image" style={{ backgroundImage: `url(${bgImage})` }}></div>
-
+            {/* <div class="bg-image" style={{ backgroundImage: `url(${bgImage})` }}></div> */}
+            <div class="bg-image"></div>
+           
             <div class="bg-text">
                 <h1>Ready on your Engineering Board Exam?</h1>
                 <h2 style={{ textAlign: "justify" }}>In InstaLearn. We test your knowledge. We track your progress. So you are ready to ACE YOUR BOARD EXAM.</h2>

@@ -60,6 +60,7 @@ const ExamResult = ({ open, retry }) => {
         dispatch({ type: "UNSHOW_RESULTS" })
         dispatch({ type: "RESET_OPTIONS" })
         dispatch({ type: "RESET_QUESTIONS" })
+        dispatch({ type: "RESET_SCORE" })
         history.push('/')
     }
 
