@@ -62,9 +62,9 @@ const LeaderboardPage = () => {
             </div>
 
             <Paper>
-                {leaderboards.map((ranker, index) => {
+                {leaderboards.filter(lb => lb.category === category).map((ranker, index) => {
                     console.log("MAPPING LB", ranker)
-                    if (ranker.category === category) {
+                    if (index <= 4) {
                         return (
                             <Card key={ranker._id} style={{display:'flex', alignItems: 'center', padding: '10px 15px', margin: '5px 0'}}>
 

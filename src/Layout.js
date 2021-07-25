@@ -279,6 +279,7 @@ subscription {
             totalQuestions
             status
             ranker {
+                _id
                 name
                 photo
                 updatedAt
@@ -298,6 +299,7 @@ export const FETCH_LEADERBOARD_QUERY = gql`
                 totalQuestions
                 status
                 ranker {
+                    _id
                     name
                     photo
                     updatedAt
